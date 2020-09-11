@@ -263,6 +263,9 @@ public class LoginSiteAddressFragment extends LoginBaseDiscoveryFragment impleme
             case MISSING_XMLRPC_METHOD:
                 showError(R.string.xmlrpc_missing_method_error);
                 break;
+            case WORDPRESS_COM_SITE:
+                // We can safely ignore this case, as we check if the site is WP.com before initiating discovery
+                break;
             case XMLRPC_BLOCKED:
                 showError(R.string.xmlrpc_post_blocked_error);
                 break;
