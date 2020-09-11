@@ -1,6 +1,9 @@
 package org.wordpress.android.ui.reader.utils
 
+import com.nhaarman.mockitokotlin2.anyOrNull
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -12,7 +15,14 @@ import org.wordpress.android.util.PhotonUtilsWrapper
 class FeaturedImageUtilsTest {
     @Mock private lateinit var photonUtilsWrapper: PhotonUtilsWrapper
 
-    private val featuredImageUtils = FeaturedImageUtils(photonUtilsWrapper)
+    private lateinit var featuredImageUtils: FeaturedImageUtils
+
+    @Before
+    fun setUp() {
+        featuredImageUtils = FeaturedImageUtils(photonUtilsWrapper)
+        whenever(photonUtilsWrapper.isMshotsUrl(anyOrNull())).thenReturn(false)
+    }
+
     @Test
     fun `does not show the same featured image twice`() {
         val image = "https://wordpress.com/image.png"
