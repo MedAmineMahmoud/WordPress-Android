@@ -20,7 +20,6 @@ class FeaturedImageUtilsTest {
     @Before
     fun setUp() {
         featuredImageUtils = FeaturedImageUtils(photonUtilsWrapper)
-        whenever(photonUtilsWrapper.isMshotsUrl(anyOrNull())).thenReturn(false)
     }
 
     @Test
